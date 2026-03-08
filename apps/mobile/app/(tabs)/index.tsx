@@ -1,22 +1,20 @@
-import { View, Text } from "react-native"
-import { useFeature } from "../../src/hooks/useFeature"
-import { useExperiment } from "../../src/hooks/useExperiment"
+import { View, Text } from 'react-native'
+import { useFeature } from '../../src/hooks/useFeature'
+import { useExperiment } from '../../src/hooks/useExperiment'
 
 function DashboardA({ enabled }: { enabled: boolean }) {
   return (
     <View
       style={{
         padding: 20,
-        backgroundColor: "#222",
+        backgroundColor: '#222',
         borderRadius: 10,
-        marginBottom: 20,
+        marginBottom: 20
       }}
     >
-      <Text style={{ color: "white", fontSize: 18 }}>
-        Dashboard Variant A
-      </Text>
+      <Text style={{ color: 'white', fontSize: 18 }}>Dashboard Variant A</Text>
 
-      <Text style={{ color: "#ccc" }}>
+      <Text style={{ color: '#ccc' }}>
         New Dashboard enabled: {String(enabled)}
       </Text>
     </View>
@@ -28,16 +26,16 @@ function DashboardB({ enabled }: { enabled: boolean }) {
     <View
       style={{
         padding: 20,
-        backgroundColor: "#2a2a40",
+        backgroundColor: '#2a2a40',
         borderRadius: 10,
-        marginBottom: 20,
+        marginBottom: 20
       }}
     >
-      <Text style={{ color: "white", fontSize: 22 }}>
+      <Text style={{ color: 'white', fontSize: 22 }}>
         🚀 Dashboard Variant B
       </Text>
 
-      <Text style={{ color: "#aaa" }}>
+      <Text style={{ color: '#aaa' }}>
         New Dashboard enabled: {String(enabled)}
       </Text>
     </View>
@@ -45,27 +43,25 @@ function DashboardB({ enabled }: { enabled: boolean }) {
 }
 
 export default function Home() {
-  const newDashboard = useFeature("newDashboard")
-  const variant = useExperiment("dashboardLayout")
+  const newDashboard = useFeature('newDashboard')
+  const variant = useExperiment('dashboardLayout')
 
   return (
     <View
       style={{
         flex: 1,
-        backgroundColor: "#111",
-        justifyContent: "center",
-        alignItems: "center",
+        backgroundColor: '#111',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}
     >
-      {variant === "A" ? (
+      {variant === 'A' ? (
         <DashboardA enabled={newDashboard} />
       ) : (
         <DashboardB enabled={newDashboard} />
       )}
 
-      <Text style={{ color: "white" }}>
-        Current experiment: {variant}
-      </Text>
+      <Text style={{ color: 'white' }}>Current experiment: {variant}</Text>
     </View>
   )
 }
