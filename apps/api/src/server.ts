@@ -5,6 +5,7 @@ import flagsRoutes from './routes/flags'
 import experimentsRoutes from './routes/experiments'
 import analyticsRoutes from './routes/analytics'
 import configRoutes from './routes/config'
+import resultsRoutes from './routes/results'
 
 const app = express()
 
@@ -15,6 +16,7 @@ app.use('/flags', flagsRoutes)
 app.use('/experiments', experimentsRoutes)
 app.use('/analytics', analyticsRoutes)
 app.use('/config', configRoutes)
+app.use('/experiments', resultsRoutes)
 
 const PORT = 3000
 
