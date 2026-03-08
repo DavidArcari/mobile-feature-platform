@@ -1,51 +1,30 @@
-import { Text, View, StyleSheet } from 'react-native'
-import { useFeatureFlags } from '../../src/hooks/useFeatureFlags'
+import { View, Text } from "react-native"
+import { useFeature } from "../../src/hooks/useFeature"
+import { useExperiment } from "../../src/hooks/useExperiment"
 
-export default function HomeScreen() {
-  const config = useFeatureFlags()
+export default function Home() {
+  const newDashboard = useFeature("newDashboard")
+  const variant = useExperiment("dashboardLayout")
 
-  if (!config) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Loading config...</Text>
-      </View>
-    )
-  }
+  console.log("New Dash -> ", String(newDashboard))
+  console.log("Variant -> ", variant)
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Feature Flags Demo</Text>
-
-      <Text style={styles.text}>
-        New Dashboard: {String(config.flags.newDashboard)}
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#111",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text style={{ color: "white", fontSize: 20 }}>
+        New Dashboard enabled: {String(newDashboard)}
       </Text>
 
-      <Text style={styles.text}>Payments: {String(config.flags.payments)}</Text>
-
-      <Text style={styles.text}>
-        New Theme: {String(config.flags.newTheme)}
-      </Text>
-
-      <Text style={styles.text}>
-        Experiment Variant: {config.experiments.dashboardLayout}
+      <Text style={{ color: "white", fontSize: 20 }}>
+        Experiment: {variant}
       </Text>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  title: {
-    color: 'white',
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 20
-  },
-  text: {
-    color: 'white'
-  }
-})
