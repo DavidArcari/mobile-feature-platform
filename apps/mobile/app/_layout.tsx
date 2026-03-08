@@ -14,12 +14,8 @@ export default function RootLayout() {
       <FeatureFlagProvider>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="modal"
-            options={{ presentation: 'modal', title: 'Modal' }}
-          />
-          <StatusBar style="auto" />
         </Stack>
+        <StatusBar style="auto" />
       </FeatureFlagProvider>
     </ThemeProvider>
   )

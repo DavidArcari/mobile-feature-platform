@@ -1,6 +1,8 @@
 import { View, Text } from 'react-native'
 import { useFeature } from '../../src/hooks/useFeature'
 import { useExperiment } from '../../src/hooks/useExperiment'
+import { Button } from 'react-native'
+import { trackConversion } from '../../src/services/conversionService'
 
 function DashboardA({ enabled }: { enabled: boolean }) {
   return (
@@ -62,6 +64,10 @@ export default function Home() {
       )}
 
       <Text style={{ color: 'white' }}>Current experiment: {variant}</Text>
+      <Button
+        title="Simular conversão"
+        onPress={() => trackConversion('dashboard_clicked')}
+      />
     </View>
   )
 }

@@ -4,4 +4,9 @@ export type ExperimentExposureEvent = {
   variant: string
 }
 
-export type AnalyticsEvent = ExperimentExposureEvent
+export type ConversionEvent = {
+  event: 'conversion'
+  name: string
+}
+
+export type AnalyticsEvent = ExperimentExposureEvent | ConversionEvent
