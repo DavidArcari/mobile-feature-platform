@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from "react"
-import { getConfig } from "../services/configService"
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import * as SecureStore from 'expo-secure-store'
+import { getConfig } from '../services/configService'
 
 type FeatureConfig = {
   flags: Record<string, boolean>
@@ -8,12 +9,24 @@ type FeatureConfig = {
 
 const FeatureFlagContext = createContext<FeatureConfig | null>(null)
 
-export function FeatureFlagProvider({ children }: { children: React.ReactNode }) {
+export function FeatureFlagProvider({
+  children
+}: {
+  children: React.ReactNode
+}) {
   const [config, setConfig] = useState<FeatureConfig | null>(null)
 
   useEffect(() => {
     async function load() {
-      const result = await getConfig()
+      let userId = await SecureStore.getItemAsync('userId')
+
+      if (!userId) {
+        userId = Math.random().toString(36).substring(2)
+        await SecureStore.setItemAsync('userId', userId)
+      }
+
+      const result = await getConfig(userId)
+
       setConfig(result)
     }
 
