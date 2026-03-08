@@ -1,7 +1,5 @@
 # dependencies
 node_modules
-
-# pnpm
 .pnpm-store
 
 # build
@@ -11,22 +9,23 @@ build
 # logs
 npm-debug.log*
 pnpm-debug.log*
-yarn-debug.log*
 
-# env files
+# env
 .env
 .env.local
 .env.*.local
 
-# macOS
+# OS
 .DS_Store
-
-# Windows
 Thumbs.db
 
 # IDE
 .vscode
 .idea
 
-# typescript cache
+# typescript
 *.tsbuildinfo
+
+# expo
+.expo
+.expo-shared

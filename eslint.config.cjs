@@ -5,9 +5,11 @@ const prettier = require('eslint-config-prettier')
 module.exports = [
   {
     ignores: [
-      'node_modules',
-      'dist',
-      'eslint.config.cjs'
+      '**/node_modules/**',
+      '**/.expo/**',
+      '**/.expo-shared/**',
+      '**/*.d.ts',
+      'dist'
     ]
   },
 
@@ -16,12 +18,13 @@ module.exports = [
   prettier,
 
   {
-    files: ['**/*.ts'],
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parser: tseslint.parser
     },
     rules: {
-      '@typescript-eslint/no-unused-vars': 'warn'
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'react/display-name': 'off'
     }
   }
 ]
