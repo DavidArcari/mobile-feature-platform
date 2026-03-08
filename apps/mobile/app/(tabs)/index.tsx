@@ -2,12 +2,51 @@ import { View, Text } from "react-native"
 import { useFeature } from "../../src/hooks/useFeature"
 import { useExperiment } from "../../src/hooks/useExperiment"
 
+function DashboardA({ enabled }: { enabled: boolean }) {
+  return (
+    <View
+      style={{
+        padding: 20,
+        backgroundColor: "#222",
+        borderRadius: 10,
+        marginBottom: 20,
+      }}
+    >
+      <Text style={{ color: "white", fontSize: 18 }}>
+        Dashboard Variant A
+      </Text>
+
+      <Text style={{ color: "#ccc" }}>
+        New Dashboard enabled: {String(enabled)}
+      </Text>
+    </View>
+  )
+}
+
+function DashboardB({ enabled }: { enabled: boolean }) {
+  return (
+    <View
+      style={{
+        padding: 20,
+        backgroundColor: "#2a2a40",
+        borderRadius: 10,
+        marginBottom: 20,
+      }}
+    >
+      <Text style={{ color: "white", fontSize: 22 }}>
+        🚀 Dashboard Variant B
+      </Text>
+
+      <Text style={{ color: "#aaa" }}>
+        New Dashboard enabled: {String(enabled)}
+      </Text>
+    </View>
+  )
+}
+
 export default function Home() {
   const newDashboard = useFeature("newDashboard")
   const variant = useExperiment("dashboardLayout")
-
-  console.log("New Dash -> ", String(newDashboard))
-  console.log("Variant -> ", variant)
 
   return (
     <View
@@ -18,12 +57,14 @@ export default function Home() {
         alignItems: "center",
       }}
     >
-      <Text style={{ color: "white", fontSize: 20 }}>
-        New Dashboard enabled: {String(newDashboard)}
-      </Text>
+      {variant === "A" ? (
+        <DashboardA enabled={newDashboard} />
+      ) : (
+        <DashboardB enabled={newDashboard} />
+      )}
 
-      <Text style={{ color: "white", fontSize: 20 }}>
-        Experiment: {variant}
+      <Text style={{ color: "white" }}>
+        Current experiment: {variant}
       </Text>
     </View>
   )
