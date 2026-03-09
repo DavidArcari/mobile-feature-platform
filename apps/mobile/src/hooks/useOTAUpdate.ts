@@ -3,7 +3,7 @@ import * as Updates from 'expo-updates'
 
 export function useOTAUpdate() {
   useEffect(() => {
-    async function checkUpdate() {
+    const timeout = setTimeout(async () => {
       try {
         const update = await Updates.checkForUpdateAsync()
 
@@ -12,10 +12,10 @@ export function useOTAUpdate() {
           await Updates.reloadAsync()
         }
       } catch (error) {
-        console.log('OTA update error:', error)
+        console.log(error)
       }
-    }
+    }, 2000)
 
-    checkUpdate()
+    return () => clearTimeout(timeout)
   }, [])
 }

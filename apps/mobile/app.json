@@ -16,7 +16,8 @@
         "backgroundColor": "#E6F4FE"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.davidarcari.mobile"
     },
     "web": {
       "output": "static",
@@ -42,7 +43,17 @@
       "reactCompiler": true
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/7aa3b65d-56da-493c-b7cd-ca7fe2116391"
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "7aa3b65d-56da-493c-b7cd-ca7fe2116391"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }
