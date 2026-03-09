@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import * as SecureStore from 'expo-secure-store'
 import { getConfig } from '../services/configService'
+import { Text } from 'react-native'
 
 type FeatureConfig = {
   flags: Record<string, boolean>
@@ -32,6 +33,10 @@ export function FeatureFlagProvider({
 
     load()
   }, [])
+
+  if (!config) {
+    return <Text style={{ color: 'white' }}>Loading features...</Text>
+  }
 
   return (
     <FeatureFlagContext.Provider value={config}>
