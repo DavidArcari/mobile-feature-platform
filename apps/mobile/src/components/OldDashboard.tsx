@@ -14,7 +14,7 @@ export function OldDashboard() {
 
       <Text style={{ color: '#9ca3af' }}>Versão antiga da tela</Text>
 
-      <Text>Old Dashboard OTA TEST</Text>
+      {/* <Text style={{ color: '#d1d5db', marginTop: 6 }}>*** - OLD DASHBOARD OTA TEST - ***</Text> */}
     </View>
   )
 }

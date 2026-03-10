@@ -17,7 +17,7 @@ export function NewDashboard() {
       <Text style={{ color: '#d1d5db', marginTop: 6 }}>
         Esta versão veio via OTA + Feature Flag
       </Text>
-      <Text>🚀 New Dashboard OTA v2</Text>
+      {/* <Text style={{ color: '#d1d5db', marginTop: 6 }}>🚀 New Dashboard OTA v2</Text> */}
     </View>
   )
 }

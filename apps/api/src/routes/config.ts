@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 
   res.json({
     flags: {
-      newDashboard: true,
+      newDashboard: false,
       payments: false,
       newTheme: true
     },
